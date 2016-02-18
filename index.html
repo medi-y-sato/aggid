@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>fingerprint2のデモ</title>
+  <script src="./bower_components/vue/dist/vue.js"></script>
+  <script src="./bower_components/fingerprintjs2/fingerprint2.js"></script>
+  <script src="./agg.js"></script>
+</head>
+
+<body>
+
+  <h1>fingerprint2のデモ</h1>
+  <p>https://github.com/Valve/fingerprintjs2</p>
+  <hr />
+  <table id="aggid" style="font-size:12px;">
+    <tr>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+    <tr>
+      <th>fingerprint</th>
+      <td>{{ result }}</td>
+    </tr>
+    <tr v-for="component in components">
+      <th>{{ component.key }}</th>
+      <td>
+        <input type="text" size="80" value="{{ component.value }}">
+      </td>
+    </tr>
+  </table>
+
+  <script language="JavaScript">
+    window.onload = function () {
+      var options = {swfPath: '/assets/FontList.swf', excludeUserAgent: true}
+      new Fingerprint2().get(function (result, components) {
+        new Vue({
+          el: '#aggid',
+          data: {
+            result: result,
+            components: components
+          }
+        })
+      })
+    }
+  </script>
+
+</body>
+
+</html>
