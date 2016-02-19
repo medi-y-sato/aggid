@@ -40,7 +40,8 @@
             components: components
           }
         })
-//        ga('send', 'event', 'pv', result, JSON.stringify(components));
+        console.log(result)
+        console.log(JSON.stringify(components))
         ga('send', 'event', 'pv', 'fingerprint' , result);
       })
 
