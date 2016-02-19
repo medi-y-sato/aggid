@@ -27,7 +27,11 @@
 
   <script language="JavaScript">
     window.onload = function () {
-      var options = {swfPath: '/assets/FontList.swf', excludeUserAgent: true}
+      var options = {
+        swfPath: '/assets/FontList.swf',
+        excludeUserAgent: true,
+        excludeWebGL: true
+      }
       new Fingerprint2().get(function (result, components) {
         new Vue({
           el: '#aggid',
@@ -36,7 +40,8 @@
             components: components
           }
         })
-        ga('send', 'event', 'pv', result, JSON.stringify(components));
+//        ga('send', 'event', 'pv', result, JSON.stringify(components));
+        ga('send', 'event', 'pv', 'fingerprint' , result);
       })
 
     }
@@ -46,7 +51,7 @@
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-74041927-1', 'auto');
   ga('send', 'pageview');
 </script>
