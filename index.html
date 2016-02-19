@@ -36,7 +36,7 @@
             components: components
           }
         })
-        ga('send', 'event', 'pv', 'fingerprint', result);
+        ga('send', 'event', 'pv', result, JSON.stringify(components));
       })
 
     }
