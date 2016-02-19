@@ -4,6 +4,7 @@
   <title>fingerprint2のデモ</title>
   <script src="./bower_components/vue/dist/vue.js"></script>
   <script src="./bower_components/fingerprintjs2/fingerprint2.js"></script>
+  <script src="./bower_components/jsSHA/src/sha.js"></script>
 </head>
 
 <body>
@@ -33,6 +34,18 @@
         excludeWebGL: true
       }
       new Fingerprint2().get(function (result, components) {
+        for(var i in components){
+          if (components[i].key == 'canvas' || components[i].key == 'webgl'){
+            var shaObj = new jsSHA("SHA-1", "TEXT");
+            shaObj.update(components[i].value);
+            components[i].value = shaObj.getHash("HEX");
+          }
+          if (components[i].key == 'js_fonts'){
+            var shaObj = new jsSHA("SHA-1", "TEXT");
+            shaObj.update(components[i].value.join(''));
+            components[i].value = shaObj.getHash("HEX");
+          }
+        }
         new Vue({
           el: '#aggid',
           data: {
