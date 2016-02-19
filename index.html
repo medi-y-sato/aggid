@@ -31,7 +31,9 @@
       var options = {
         swfPath: '/assets/FontList.swf',
         excludeUserAgent: true,
-        excludeWebGL: true
+        excludeWebGL: true,
+        excludeOpenDatabase: true,
+        excludeSessionStorage: true
       }
       new Fingerprint2().get(function (result, components) {
         for(var i in components){
