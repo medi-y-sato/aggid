@@ -35,7 +35,7 @@
         excludeOpenDatabase: true,
         excludeSessionStorage: true
       }
-      new Fingerprint2().get(function (result, components) {
+      new Fingerprint2(options).get(function (result, components) {
         for(var i in components){
           if (components[i].key == 'canvas' || components[i].key == 'webgl'){
             var shaObj = new jsSHA("SHA-1", "TEXT");
